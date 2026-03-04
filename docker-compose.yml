@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  forge:
+    build: .
+    image: forge-p1
+    stdin_open: true      # keeps stdin open for input()
+    tty: true             # allocates a terminal
+    env_file:
+      - .env              # loads GROQ_API_KEY from local .env
+    volumes:
+      - ./output:/app/output   # generated TRD files appear on host

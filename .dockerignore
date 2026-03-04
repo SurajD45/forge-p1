@@ -1,0 +1,15 @@
+# Never copy these into the image
+.env
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.git/
+.gitignore
+TRD.json
+TRD.md
+ARCH.json
+ARCH.md
+*.egg-info/
+.pytest_cache/
