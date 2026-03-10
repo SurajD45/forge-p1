@@ -3,11 +3,18 @@ from jsonschema import validate
 from jsonschema.exceptions import ValidationError
 
 
-def validate_trd(trd: dict):
-    with open("schemas/trd_schema.json") as f:
+def _validate(instance: dict, schema_path: str):
+    with open(schema_path) as f:
         schema = json.load(f)
-
     try:
-        validate(instance=trd, schema=schema)
+        validate(instance=instance, schema=schema)
     except ValidationError as e:
-        raise ValueError(f"TRD validation failed:\n{e.message}")
+        raise ValueError(f"Validation failed:\n{e.message}")
+
+
+def validate_trd(trd: dict):
+    _validate(trd, "schemas/trd_schema.json")
+
+
+def validate_arch(arch: dict):
+    _validate(arch, "schemas/arch_schema.json")
